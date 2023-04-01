@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
     public Animator anim;
@@ -14,9 +14,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    public float moveSpeed = 5f;
     public float BulletSpeed;
     private float lastFire;
     public float fireDelay;
+
+    public Text collectedText;
+    public static int collectedAmount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        fireDelay = GameController.FireRate;
+        moveSpeed = GameController.MoveSpeed;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -43,7 +50,6 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Horizontal", movement.x);
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.sqrMagnitude);
-
     }
 
         
@@ -51,6 +57,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        collectedText.text = "Items Collected: " + collectedAmount;
     }
 
     void Shoot(float x, float y)
@@ -61,6 +68,7 @@ public class PlayerController : MonoBehaviour
         (x < 0) ? Mathf.Floor(x) * BulletSpeed : Mathf.Ceil(x) * BulletSpeed,
         (x < 0) ? Mathf.Floor(y) * BulletSpeed : Mathf.Ceil(y) * BulletSpeed
     );
-
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, new Vector3(x, y, 0));
+        bullet.transform.rotation = rotation;
     }
 }
