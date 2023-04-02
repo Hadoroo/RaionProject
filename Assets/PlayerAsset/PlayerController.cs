@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
         {
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
-
         }
 
         anim.SetFloat("Horizontal", movement.x);
@@ -70,5 +69,13 @@ public class PlayerController : MonoBehaviour
     );
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, new Vector3(x, y, 0));
         bullet.transform.rotation = rotation;
+        // GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
+        // bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+
+        // Vector2 bulletDirection = new Vector2(x, y).normalized;
+        // bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * BulletSpeed;
+
+        // Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg);
+        // bullet.transform.rotation = rotation;
     }
 }

@@ -7117,6 +7117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3662991839647138341, guid: ec88037936ad3bb45a9ad088feca4481, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 1223530394029681419, guid: 315fa7aeb4384ae4a960ce8341c902ee, type: 3}
     - target: {fileID: 3662991839647138342, guid: ec88037936ad3bb45a9ad088feca4481, type: 3}
       propertyPath: m_RootOrder
       value: 2
