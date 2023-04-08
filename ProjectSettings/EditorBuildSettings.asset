@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/Lvl1.unity
     guid: 766a2b36dad7dee4eb80437cd34dd066
+  - enabled: 1
+    path: Assets/Scenes/death.unity
+    guid: 6372616e9529c884ca7fc41938b620f1
   m_configObjects: {}

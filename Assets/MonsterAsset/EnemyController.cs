@@ -85,8 +85,16 @@ public class EnemyController : MonoBehaviour
             curState = EnemyState.Attack;
         }
 
+        // Stop enemy movement when colliding with objects tagged "Ground"
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.2f);
+        foreach (Collider2D col in colliders)
+        {
+            if (col.gameObject.tag == "Ground")
+            {
+                transform.position = Vector2.MoveTowards(transform.position, col.transform.position, -speed * Time.deltaTime);
+            }
+        }
     }
-
 
     private bool IsPlayerInRange(float range)
     {
@@ -111,16 +119,16 @@ public class EnemyController : MonoBehaviour
 
     void Wander()
     {
-        if (!chooseDir)
-        {
-            StartCoroutine(chooseDirection());
-        }
+        // if (!chooseDir)
+        // {
+        //     StartCoroutine(chooseDirection());
+        // }
 
-        transform.position += transform.right * speed * Time.deltaTime;
-        if (IsPlayerInRange(range))
-        {
-            curState = EnemyState.Follow;
-        }
+        // transform.position += transform.right * speed * Time.deltaTime;
+        // if (IsPlayerInRange(range))
+        // {
+        //     curState = EnemyState.Follow;
+        // }
     }
 
     void Follow()

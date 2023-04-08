@@ -17,8 +17,15 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene("lvl1");
     }
 
-    public void Quit()
+    public void restart()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
-}
+
+
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
+    }

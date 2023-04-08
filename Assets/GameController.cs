@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
 
+    GameObject player;
     public static GameController instance;
 
     private static float health = 6;
     private static int maxHealth = 6;
 
-    private static float moveSpeed = 5f;
+    private static float moveSpeed = 7f;
     private static float fireRate = 0.5f;
     private static float bulletSize = 0.5f;
     
@@ -58,6 +60,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -94,8 +101,8 @@ public class GameController : MonoBehaviour
         bulletSize += size;
     }
 
-    private static void KillPlayer()
+    public static void KillPlayer()
     {
-        
+        SceneManager.LoadScene("death");
     }
 }

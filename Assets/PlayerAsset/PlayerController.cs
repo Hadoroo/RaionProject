@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     public float BulletSpeed;
     private float lastFire;
     public float fireDelay;
